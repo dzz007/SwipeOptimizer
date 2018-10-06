@@ -30,7 +30,6 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
      * @param context
      */
     public SQLiteDatabaseHandler(Context context) {
-
         super(context, DB_NAME, null, 1);
         this.myContext = context;
     }
@@ -48,7 +47,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
             //By calling this method and empty database will be created into the default system path
             //of your application so we are gonna be able to overwrite that database with our database.
-            this.getReadableDatabase();
+            //this.getReadableDatabase();
 
             try {
 
@@ -150,11 +149,14 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     ArrayList<Item> returnData(int location, int type, double maximum) {
         SQLiteDatabase db = myDataBase;
-        Cursor cur = db.rawQuery("select Name,Price from data where Location", null);
+
+        Cursor cur = db.query("data", new String [] {"Name", "Price"},
+                "Location=?1 and Type=?2 and Price <= ?3", new String [] {String.valueOf(location), String.valueOf(type), String.valueOf(maximum)}, null,
+                null, "Price desc");
         cur.moveToFirst();
         ArrayList<Item> result = new ArrayList<>();
         do {
-            result.add(new Item(Double.parseDouble(cur.getString(0)), cur.getString(1)));
+            result.add(new Item(Double.parseDouble(cur.getString(1)), cur.getString(0)));
         } while(cur.moveToNext());
         return result;
     }
