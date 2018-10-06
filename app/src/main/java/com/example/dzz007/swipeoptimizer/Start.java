@@ -12,7 +12,7 @@ public class Start extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        setTitle("PLease select a location");
+        setTitle("Please select a location");
 
         Button btnRock = (Button) findViewById(R.id.btnRock);
         Button btnHenrys= (Button) findViewById(R.id.btnHenrys);

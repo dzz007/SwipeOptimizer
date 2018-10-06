@@ -7,9 +7,72 @@
     tools:context=".Choose_Category">
 
     <ListView
-        android:id="@+id/choose_category"
+        android:id="@+id/snacks_list"
         android:layout_width="368dp"
-        android:layout_height="495dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:layout_height="134dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drinks_list" />
+
+    <ListView
+        android:id="@+id/drinks_list"
+        android:layout_width="368dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/entrees_list" />
+
+    <ListView
+        android:id="@+id/entrees_list"
+        android:layout_width="368dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Entrees_Label"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:text="Entrees"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/Drinks_Label"
+        android:layout_width="44dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="156dp"
+        android:text="Drinks"
+        app:layout_constraintTop_toBottomOf="@+id/Entrees_Label"
+        tools:layout_editor_absoluteX="15dp" />
+
+    <TextView
+        android:id="@+id/Snacks_Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:text="Snacks"
+        app:layout_constraintTop_toBottomOf="@+id/Drinks_Label"
+        tools:layout_editor_absoluteX="14dp" />
+
 </android.support.constraint.ConstraintLayout>
