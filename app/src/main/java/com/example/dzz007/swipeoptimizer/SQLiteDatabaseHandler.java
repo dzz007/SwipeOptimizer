@@ -7,6 +7,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -147,13 +148,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    ArrayList<String> returnData() {
+    ArrayList<Item> returnData(int location, int type, double maximum) {
         SQLiteDatabase db = myDataBase;
-        Cursor cur = db.rawQuery("select * from data", null);
+        Cursor cur = db.rawQuery("select Name,Price from data where Location", null);
         cur.moveToFirst();
-        ArrayList<String> result = new ArrayList<>();
+        ArrayList<Item> result = new ArrayList<>();
         do {
-            result.add(cur.getString(1));
+            result.add(new Item(Double.parseDouble(cur.getString(0)), cur.getString(1)));
         } while(cur.moveToNext());
         return result;
     }
