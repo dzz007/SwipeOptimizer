@@ -16,7 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Choose_Category" />
+        <activity android:name=".Choose_Category" android:label="Swipe Optimizer\t$4.87/$9.00"/>
         <activity android:name=".Choose_Food"></activity>
     </application>
 

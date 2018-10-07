@@ -19,8 +19,8 @@ public class Choose_Category extends AppCompatActivity {
     ArrayList<String> snacks_list = new ArrayList<>();
     ArrayAdapter<String> snacks_adapter;
 
-    int location;
     double current_balance;
+    int location;
 
     private void execute(int type) {
         Intent i = new Intent(Choose_Category.this, Choose_Food.class);
@@ -40,6 +40,7 @@ public class Choose_Category extends AppCompatActivity {
 
                 entrees_list.add(0, data.getStringExtra("return_item_name"));
                 entrees_adapter.notifyDataSetChanged();
+                current_balance-=data.getDoubleExtra("return_item_price",0);
 
             }
 
@@ -47,6 +48,7 @@ public class Choose_Category extends AppCompatActivity {
 
                 drinks_list.add(0, data.getStringExtra("return_item_name"));
                 drinks_adapter.notifyDataSetChanged();
+                current_balance-=data.getDoubleExtra("return_item_price",0);
 
             }
 
@@ -54,6 +56,7 @@ public class Choose_Category extends AppCompatActivity {
 
                 snacks_list.add(0, data.getStringExtra("return_item_name"));
                 snacks_adapter.notifyDataSetChanged();
+                current_balance-=data.getDoubleExtra("return_item_price",0);
 
             }
 
@@ -62,7 +65,7 @@ public class Choose_Category extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__category);
-        setTitle("Swipe Optimizer                   $4.87/$9.00");
+
 
         Intent i = getIntent();
         location = i.getIntExtra("location",1);
