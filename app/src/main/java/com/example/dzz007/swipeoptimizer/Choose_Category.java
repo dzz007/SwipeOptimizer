@@ -19,13 +19,20 @@ public class Choose_Category extends AppCompatActivity {
     ArrayList<String> snacks_list = new ArrayList<>();
     ArrayAdapter<String> snacks_adapter;
 
+    int location;
+    double current_balance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__category);
         setTitle("Swipe Optimizer                   $4.87/$9.00");
 
-        final ListView entrees_lv = (ListView)findViewById(R.id.entrees_list);
+        Intent i = getIntent();
+        location = i.getIntExtra("location",1);
+        current_balance = i.getDoubleExtra("current_balance", 10.0);
+
+        ListView entrees_lv = (ListView)findViewById(R.id.entrees_list);
         entrees_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, entrees_list);
 
         ListView drinks_lv = (ListView)findViewById(R.id.drinks_list);
@@ -45,7 +52,11 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(entrees_list.get(position).equals("Add New")){
 
-                    startActivity(new Intent(Choose_Category.this, Choose_Food.class));
+                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
+                    i.putExtra("location", location);
+                    i.putExtra("type", 1);
+                    i.putExtra("current_balance", current_balance);
+                    startActivity(i);
 
                 }
 
@@ -59,7 +70,11 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(drinks_list.get(position).equals("Add New")){
 
-                    startActivity(new Intent(Choose_Category.this, Choose_Food.class));
+                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
+                    i.putExtra("location", location);
+                    i.putExtra("type", 2);
+                    i.putExtra("current_balance", current_balance);
+                    startActivity(i);
 
                 }
 
@@ -73,7 +88,11 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(snacks_list.get(position).equals("Add New")){
 
-                    startActivity(new Intent(Choose_Category.this, Choose_Food.class));
+                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
+                    i.putExtra("location", location);
+                    i.putExtra("type", 3);
+                    i.putExtra("current_balance", current_balance);
+                    startActivity(i);
 
                 }
 

@@ -21,7 +21,30 @@ public class Start extends AppCompatActivity {
         btnRock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Start.this, Choose_Category.class));
+                Intent i = new Intent(Start.this, Choose_Category.class);
+                i.putExtra("location", 1);
+                i.putExtra("current_balance", 9.0);
+                startActivity(i);
+            }
+        });
+
+        btnHenrys.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Start.this, Choose_Category.class);
+                i.putExtra("location", 2);
+                i.putExtra("current_balance", 10.0);
+                startActivity(i);
+            }
+        });
+
+        btnSBTruck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Start.this, Choose_Category.class);
+                i.putExtra("location", 3);
+                i.putExtra("current_balance", 9.0);
+                startActivity(i);
             }
         });
 
