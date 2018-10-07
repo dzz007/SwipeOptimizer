@@ -153,8 +153,13 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
         Cursor cur = db.query("data", new String [] {"Name", "Price"},
                 "Location=?1 and Type=?2 and Price <= ?3", new String [] {String.valueOf(location), String.valueOf(type), String.valueOf(maximum)}, null,
                 null, "Price desc");
-        cur.moveToFirst();
         ArrayList<Item> result = new ArrayList<>();
+        
+        cur.moveToFirst();
+
+        if(cur.getCount() == 0)
+            return result;
+
         do {
             result.add(new Item(Double.parseDouble(cur.getString(1)), cur.getString(0)));
         } while(cur.moveToNext());
