@@ -2,6 +2,7 @@ package com.example.dzz007.swipeoptimizer;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +14,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
+import android.util.Log;
+
+
 public class Choose_Food extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose__food);
+
 
         Intent i = getIntent();
         int location = i.getIntExtra("location",1);
@@ -54,6 +59,7 @@ public class Choose_Food extends AppCompatActivity {
 
             }
         });
+
 
 
     }
