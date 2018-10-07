@@ -13,13 +13,20 @@ import java.util.ArrayList;
 public class Choose_Category extends AppCompatActivity {
 
     ArrayList<String> entrees_list = new ArrayList<>();
+    ArrayList<Double> entrees_list_prices = new ArrayList<>();
     ArrayAdapter<String> entrees_adapter;
     ArrayList<String> drinks_list = new ArrayList<>();
+    ArrayList<Double> drinks_list_prices = new ArrayList<>();
     ArrayAdapter<String> drinks_adapter;
     ArrayList<String> snacks_list = new ArrayList<>();
+    ArrayList<Double> snacks_list_prices = new ArrayList<>();
     ArrayAdapter<String> snacks_adapter;
+    ListView entrees_lv;
+    ListView drinks_lv;
+    ListView snacks_lv;
 
     double current_balance;
+    double max_balance;
     int location;
 
     private void execute(int type) {
@@ -41,6 +48,8 @@ public class Choose_Category extends AppCompatActivity {
                 entrees_list.add(0, data.getStringExtra("return_item_name"));
                 entrees_adapter.notifyDataSetChanged();
                 current_balance-=data.getDoubleExtra("return_item_price",0);
+                entrees_list_prices.add(0,data.getDoubleExtra("return_item_price",0));
+                entrees_lv.setSelection(entrees_lv.getCount()-1);
 
             }
 
@@ -49,6 +58,8 @@ public class Choose_Category extends AppCompatActivity {
                 drinks_list.add(0, data.getStringExtra("return_item_name"));
                 drinks_adapter.notifyDataSetChanged();
                 current_balance-=data.getDoubleExtra("return_item_price",0);
+                drinks_list_prices.add(0,data.getDoubleExtra("return_item_price",0));
+                drinks_lv.setSelection(drinks_lv.getCount()-1);
 
             }
 
@@ -57,8 +68,12 @@ public class Choose_Category extends AppCompatActivity {
                 snacks_list.add(0, data.getStringExtra("return_item_name"));
                 snacks_adapter.notifyDataSetChanged();
                 current_balance-=data.getDoubleExtra("return_item_price",0);
+                snacks_list_prices.add(0,data.getDoubleExtra("return_item_price",0));
+                snacks_lv.setSelection(snacks_lv.getCount()-1);
 
             }
+
+            setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
 
     }
     @Override
@@ -70,14 +85,17 @@ public class Choose_Category extends AppCompatActivity {
         Intent i = getIntent();
         location = i.getIntExtra("location",1);
         current_balance = i.getDoubleExtra("current_balance", 10.0);
+        setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+        max_balance = current_balance;
 
-        ListView entrees_lv = (ListView)findViewById(R.id.entrees_list);
+
+        entrees_lv = (ListView)findViewById(R.id.entrees_list);
         entrees_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, entrees_list);
 
-        ListView drinks_lv = (ListView)findViewById(R.id.drinks_list);
+        drinks_lv = (ListView)findViewById(R.id.drinks_list);
         drinks_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, drinks_list);
 
-        ListView snacks_lv = (ListView)findViewById(R.id.snacks_list);
+        snacks_lv = (ListView)findViewById(R.id.snacks_list);
         snacks_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, snacks_list);
 
         entrees_list.add("Add New");
@@ -93,6 +111,14 @@ public class Choose_Category extends AppCompatActivity {
 
                     execute(1);
 
+                }else{
+
+                        current_balance+=entrees_list_prices.get(position);
+                        entrees_list.remove(position);
+                        entrees_list_prices.remove(position);
+                        entrees_adapter.notifyDataSetChanged();
+                        setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+
                 }
 
             }
@@ -105,6 +131,13 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(drinks_list.get(position).equals("Add New")){
                     execute(2);
+                }else{
+
+                    current_balance+=drinks_list_prices.get(position);
+                    drinks_list.remove(position);
+                    drinks_list_prices.remove(position);
+                    drinks_adapter.notifyDataSetChanged();
+                    setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
                 }
 
             }
@@ -117,6 +150,13 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(snacks_list.get(position).equals("Add New")){
                     execute(3);
+                }else{
+
+                    current_balance+=snacks_list_prices.get(position);
+                    snacks_list.remove(position);
+                    snacks_list_prices.remove(position);
+                    snacks_adapter.notifyDataSetChanged();
+                    setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
                 }
 
             }
