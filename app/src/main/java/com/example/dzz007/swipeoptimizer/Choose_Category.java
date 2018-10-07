@@ -21,7 +21,31 @@ public class Choose_Category extends AppCompatActivity {
 
     int location;
     double current_balance;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
+            if(requestCode==1){
+
+                entrees_list.add(0, data.getStringExtra("return_item_name"));
+                entrees_adapter.notifyDataSetChanged();
+
+            }
+
+            if(requestCode==2){
+
+                drinks_list.add(0, data.getStringExtra("return_item_name"));
+                drinks_adapter.notifyDataSetChanged();
+
+            }
+
+            if(requestCode==3){
+
+                snacks_list.add(0, data.getStringExtra("return_item_name"));
+                snacks_adapter.notifyDataSetChanged();
+
+            }
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +80,7 @@ public class Choose_Category extends AppCompatActivity {
                     i.putExtra("location", location);
                     i.putExtra("type", 1);
                     i.putExtra("current_balance", current_balance);
-                    startActivity(i);
+                    startActivityForResult(i,1);
 
                 }
 
@@ -74,7 +98,8 @@ public class Choose_Category extends AppCompatActivity {
                     i.putExtra("location", location);
                     i.putExtra("type", 2);
                     i.putExtra("current_balance", current_balance);
-                    startActivity(i);
+                    startActivityForResult(i,2);
+
 
                 }
 
@@ -92,7 +117,7 @@ public class Choose_Category extends AppCompatActivity {
                     i.putExtra("location", location);
                     i.putExtra("type", 3);
                     i.putExtra("current_balance", current_balance);
-                    startActivity(i);
+                    startActivityForResult(i,3);
 
                 }
 
