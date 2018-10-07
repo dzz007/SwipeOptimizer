@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
-    private static String DB_PATH = "/data/data/com.example.dzz007.swipeoptimizer/databases/";
+    private static String DB_PATH = "/data/data/com.example.dzz007.swipeoptimizer/";
 
     private static String DB_NAME = "data.sqlite";
 
@@ -157,12 +157,16 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
 
         cur.moveToFirst();
 
-        if(cur.getCount() == 0)
+        if(cur.getCount() == 0) {
+            cur.close();
             return result;
+        }
 
         do {
             result.add(new Item(Double.parseDouble(cur.getString(1)), cur.getString(0)));
         } while(cur.moveToNext());
+
+        cur.close();
         return result;
     }
 }
