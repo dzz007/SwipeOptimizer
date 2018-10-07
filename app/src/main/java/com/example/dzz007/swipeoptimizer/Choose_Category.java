@@ -38,6 +38,10 @@ public class Choose_Category extends AppCompatActivity {
         startActivityForResult(i, type);
     }
 
+    private void changeTitle(double balance) {
+        setTitle("Swipe Optimizer  $"+((double)Math.round(balance*100.0)/100.0)+" Left");
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
 
@@ -79,7 +83,7 @@ public class Choose_Category extends AppCompatActivity {
 
             }
 
-            setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
+            changeTitle(current_balance);
 
     }
     @Override
@@ -91,7 +95,7 @@ public class Choose_Category extends AppCompatActivity {
         Intent i = getIntent();
         location = i.getIntExtra("location",1);
         current_balance = i.getDoubleExtra("current_balance", 10.0);
-        setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
+        changeTitle(current_balance);
         max_balance = current_balance;
 
 
@@ -123,7 +127,7 @@ public class Choose_Category extends AppCompatActivity {
                         entrees_list.remove(position);
                         entrees_list_prices.remove(position);
                         entrees_adapter.notifyDataSetChanged();
-                        setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
+                        changeTitle(current_balance);
 
                 }
 
@@ -143,7 +147,7 @@ public class Choose_Category extends AppCompatActivity {
                     drinks_list.remove(position);
                     drinks_list_prices.remove(position);
                     drinks_adapter.notifyDataSetChanged();
-                    setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
+                    changeTitle(current_balance);
                 }
 
             }
@@ -162,7 +166,7 @@ public class Choose_Category extends AppCompatActivity {
                     snacks_list.remove(position);
                     snacks_list_prices.remove(position);
                     snacks_adapter.notifyDataSetChanged();
-                    setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
+                    changeTitle(current_balance);
                 }
 
             }

@@ -32,12 +32,6 @@ public class Choose_Food extends AppCompatActivity {
 
         SQLiteDatabaseHandler sq = new SQLiteDatabaseHandler(this);
 
-        try {
-            sq.createDataBase();
-        } catch ( Exception e) {
-            e.printStackTrace();
-        }
-        sq.openDataBase();
         final ArrayList<Item> item_list = sq.returnData(location, type, current_balance);
 
         if(item_list.isEmpty()) {
