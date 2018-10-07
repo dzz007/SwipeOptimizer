@@ -79,7 +79,7 @@ public class Choose_Category extends AppCompatActivity {
 
             }
 
-            setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+            setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
 
     }
     @Override
@@ -91,7 +91,7 @@ public class Choose_Category extends AppCompatActivity {
         Intent i = getIntent();
         location = i.getIntExtra("location",1);
         current_balance = i.getDoubleExtra("current_balance", 10.0);
-        setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+        setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
         max_balance = current_balance;
 
 
@@ -123,7 +123,7 @@ public class Choose_Category extends AppCompatActivity {
                         entrees_list.remove(position);
                         entrees_list_prices.remove(position);
                         entrees_adapter.notifyDataSetChanged();
-                        setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+                        setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
 
                 }
 
@@ -143,7 +143,7 @@ public class Choose_Category extends AppCompatActivity {
                     drinks_list.remove(position);
                     drinks_list_prices.remove(position);
                     drinks_adapter.notifyDataSetChanged();
-                    setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+                    setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
                 }
 
             }
@@ -162,7 +162,7 @@ public class Choose_Category extends AppCompatActivity {
                     snacks_list.remove(position);
                     snacks_list_prices.remove(position);
                     snacks_adapter.notifyDataSetChanged();
-                    setTitle("Swipe Optimizer  $"+(current_balance)+" Left");
+                    setTitle("Swipe Optimizer  $"+((double)Math.round(current_balance*100.0)/100.0)+" Left");
                 }
 
             }
