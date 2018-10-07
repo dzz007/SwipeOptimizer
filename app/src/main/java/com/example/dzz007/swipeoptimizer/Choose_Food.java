@@ -34,6 +34,12 @@ public class Choose_Food extends AppCompatActivity {
         Log.d(TAG,"Location: "+location+"\tType: "+type+"\tBalance: "+current_balance);
 
         SQLiteDatabaseHandler sq = new SQLiteDatabaseHandler(this);
+        try {
+            sq.createDataBase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        sq.openDataBase();
         ArrayList<Item> item_list = sq.returnData(location, type, current_balance);
 
         HashMap<String, Double> item_hash = new HashMap<>();
