@@ -39,11 +39,11 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
      * */
     public void createDataBase() throws IOException{
 
-        boolean dbExist = checkDataBase();
+        /*boolean dbExist = checkDataBase();
 
         if(dbExist){
             //do nothing - database already exist
-        }else{
+        }else{*/
 
             //By calling this method and empty database will be created into the default system path
             //of your application so we are gonna be able to overwrite that database with our database.
@@ -58,7 +58,7 @@ public class SQLiteDatabaseHandler extends SQLiteOpenHelper {
                 throw new Error("Error copying database");
 
             }
-        }
+        //}
 
     }
 

@@ -8,7 +8,7 @@
 
     <ListView
         android:id="@+id/snacks_list"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="134dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -23,7 +23,7 @@
 
     <ListView
         android:id="@+id/drinks_list"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="134dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -38,7 +38,7 @@
 
     <ListView
         android:id="@+id/entrees_list"
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="134dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
