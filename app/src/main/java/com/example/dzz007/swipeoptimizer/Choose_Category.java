@@ -2,6 +2,7 @@ package com.example.dzz007.swipeoptimizer;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +43,11 @@ public class Choose_Category extends AppCompatActivity {
 
         if(resultCode == RESULT_CANCELED)
             return;
+        if(resultCode == RESULT_FIRST_USER) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Bad").setMessage("GG").show();
+            return;
+        }
 
             if(requestCode==1){
 
