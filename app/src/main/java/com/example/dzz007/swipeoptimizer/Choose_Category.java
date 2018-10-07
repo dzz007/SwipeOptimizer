@@ -21,8 +21,20 @@ public class Choose_Category extends AppCompatActivity {
 
     int location;
     double current_balance;
+
+    private void execute(int type) {
+        Intent i = new Intent(Choose_Category.this, Choose_Food.class);
+        i.putExtra("location", location);
+        i.putExtra("type", type);
+        i.putExtra("current_balance", current_balance);
+        startActivityForResult(i, type);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        if(resultCode == RESULT_CANCELED)
+            return;
 
             if(requestCode==1){
 
@@ -76,11 +88,7 @@ public class Choose_Category extends AppCompatActivity {
 
                 if(entrees_list.get(position).equals("Add New")){
 
-                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
-                    i.putExtra("location", location);
-                    i.putExtra("type", 1);
-                    i.putExtra("current_balance", current_balance);
-                    startActivityForResult(i,1);
+                    execute(1);
 
                 }
 
@@ -93,14 +101,7 @@ public class Choose_Category extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(drinks_list.get(position).equals("Add New")){
-
-                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
-                    i.putExtra("location", location);
-                    i.putExtra("type", 2);
-                    i.putExtra("current_balance", current_balance);
-                    startActivityForResult(i,2);
-
-
+                    execute(2);
                 }
 
             }
@@ -112,13 +113,7 @@ public class Choose_Category extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if(snacks_list.get(position).equals("Add New")){
-
-                    Intent i = new Intent(Choose_Category.this, Choose_Food.class);
-                    i.putExtra("location", location);
-                    i.putExtra("type", 3);
-                    i.putExtra("current_balance", current_balance);
-                    startActivityForResult(i,3);
-
+                    execute(3);
                 }
 
             }
