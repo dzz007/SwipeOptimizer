@@ -49,7 +49,9 @@ public class Choose_Category extends AppCompatActivity {
             return;
         if(resultCode == RESULT_FIRST_USER) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Bad").setMessage("GG").show();
+            builder.setTitle("NO ITEMS LEFT WITHIN BUDGET").setMessage("Look's like there are no " +
+                    "items left in this category within your remaining balance.\nTap an item to remove" +
+                    " it and try again.").show();
             return;
         }
 
